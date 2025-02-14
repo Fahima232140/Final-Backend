@@ -55,8 +55,8 @@ app.get('/payment', (req, res) => {
 app.get('/about', (req, res) => {
     res.render('about'); // ✅ Correct way to render about.hbs
 });
-app.get("/", (req, res) => {
-    res.send("Backend is running successfully!");
+app.get('/', (req, res) => {
+    res.send('Server is running...');
   });
   
 
@@ -72,6 +72,12 @@ app.use('/api/booking', bookingRoutes); // Add booking API route
 app.use('/api/auth', checkSessionRoutes); // ✅ Now available at /api/auth/check-session
 app.use("/api/payment", paymentRoutes); 
 app.use(express.static(path.join(__dirname, 'public')));
+
+// Enable CORS for frontend access
+app.use(cors({
+    origin: process.env.FRONTEND_URL || 'http://localhost:3000',
+    credentials: true,
+  }));
 
 console.log("📧 Email User:", process.env.EMAIL_USER);
 console.log("🔑 Email Pass:", process.env.EMAIL_PASS ? "Loaded" : "Not Loaded");
