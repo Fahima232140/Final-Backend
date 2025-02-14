@@ -55,6 +55,10 @@ app.get('/payment', (req, res) => {
 app.get('/about', (req, res) => {
     res.render('about'); // ✅ Correct way to render about.hbs
 });
+app.get("/", (req, res) => {
+    res.send("Backend is running successfully!");
+  });
+  
 
 app.get('/contact', (req, res) => {
     res.render('contact'); // ✅ Correct way to render about.hbs
