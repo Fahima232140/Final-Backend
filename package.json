@@ -4,6 +4,7 @@
   "main": "index.js",
   "scripts": {
     "devStart": "nodemon server.js",
+    "build": "exit 0",
     "start": "node server.js"
   },
   "author": "",
